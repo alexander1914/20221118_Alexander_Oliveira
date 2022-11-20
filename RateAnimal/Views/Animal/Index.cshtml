@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RateAnimal.Models.Animal>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h1>My Animals</h1>
+            <hr />
+            <p>
+                <a class="btn btn-primary" asp-action="Create"><i class="bi bi-file-earmark-plus"></i>&nbsp;Add My Animal</a>
+            </p>            
+            <br />
+        </div>
+        <div class="col-8">
+            @foreach (var item in Model)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImgUrl)" alt="Card image cap" style="height:100px; width:180px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Name:</strong>&nbsp;@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">I love my animals.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Category:</strong>&nbsp;@Html.DisplayFor(modelItem => item.Category)</li>
+                        <li class="list-group-item"><strong>Size:</strong>&nbsp;@Html.DisplayFor(modelItem => item.Size)</li>
+                    </ul>
+                    <div class="card-body">
+                        <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i>&nbsp;Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                    </div>
+                </div>
+                <br />
+            }
+        </div>
+    </div>
+</div>
+
+
